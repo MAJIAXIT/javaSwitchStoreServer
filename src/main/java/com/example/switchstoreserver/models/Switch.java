@@ -24,7 +24,7 @@ public class Switch {
     @Column
     public String colour;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "type_id")
     public SwitchTypes switchType;
 }
