@@ -1,12 +1,11 @@
 package com.example.switchstoreserver.controllers;
 
-import com.example.switchstoreserver.dtos.SwitchResponseDto;
+import com.example.switchstoreserver.dtos.response.SwitchResponseDto;
+import com.example.switchstoreserver.dtos.response.SwitchesListResponseDto;
 import com.example.switchstoreserver.services.SwitchesService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 
 @RestController
 @RequestMapping(path = "/switches", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
@@ -17,7 +16,7 @@ public class SwitchesController {
     private SwitchesService switchesService;
 
     @GetMapping(value = "/getAll")
-    public ArrayList<SwitchResponseDto> getAll() {
+    public SwitchesListResponseDto getAll() {
         return switchesService.getAll();
     }
 

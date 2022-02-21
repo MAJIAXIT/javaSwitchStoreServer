@@ -1,6 +1,7 @@
 package com.example.switchstoreserver.services;
 
-import com.example.switchstoreserver.dtos.SwitchResponseDto;
+import com.example.switchstoreserver.dtos.response.SwitchResponseDto;
+import com.example.switchstoreserver.dtos.response.SwitchesListResponseDto;
 import com.example.switchstoreserver.models.Switch;
 import com.example.switchstoreserver.repositories.SwitchesRepository;
 import lombok.AllArgsConstructor;
@@ -21,8 +22,10 @@ public class SwitchesService {
     @Autowired
     private SwitchesRepository switchesRepository;
 
-    public ArrayList<SwitchResponseDto> getAll() {
-        return (ArrayList<SwitchResponseDto>) switchesRepository.findAll().stream().map(switches -> modelMapper.map(switches, SwitchResponseDto.class)).collect(Collectors.toList());
+    public SwitchesListResponseDto getAll() {
+        ArrayList<SwitchResponseDto> switchesList = (ArrayList<SwitchResponseDto>) switchesRepository.findAll().stream().map(aSwitch -> modelMapper.map(aSwitch, SwitchResponseDto.class)).collect(Collectors.toList());
+
+        return new SwitchesListResponseDto(switchesList);
     }
 
     public SwitchResponseDto getById(int id){
