@@ -34,4 +34,7 @@ public class SwitchesService {
         return modelMapper.map(aSwitch, SwitchResponseDto.class);
     }
 
+    public void deleteById(int id){
+        switchesRepository.deleteById(id);
+    }
 }

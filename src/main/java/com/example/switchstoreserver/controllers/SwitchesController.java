@@ -25,8 +25,8 @@ public class SwitchesController {
         return switchesService.getById(id);
     }
 
-//    @GetMapping(value = "/deleteById/{id}")
-//    public void deleteById(@PathVariable int id) {
-//        return switchesService.deleteById(id);
-//    }
+    @DeleteMapping(value = "/deleteById/{id}")
+    public void deleteById(@PathVariable int id) {
+        switchesService.deleteById(id);
+    }
 }
