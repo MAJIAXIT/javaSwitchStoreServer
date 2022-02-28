@@ -9,5 +9,5 @@ import java.util.ArrayList;
 @AllArgsConstructor
 @Data
 public class SwitchTypesListResponseDto {
-    ArrayList<SwitchTypes> switchTypes;
+    ArrayList<SwitchTypes> switchesTypesList;
 }
