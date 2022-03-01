@@ -1,5 +1,6 @@
 package com.example.switchstoreserver.controllers;
 
+import com.example.switchstoreserver.dtos.request.SwitchRequestDto;
 import com.example.switchstoreserver.dtos.response.SwitchResponseDto;
 import com.example.switchstoreserver.dtos.response.SwitchesListResponseDto;
 import com.example.switchstoreserver.services.SwitchesService;
@@ -23,6 +24,11 @@ public class SwitchesController {
     @GetMapping(value = "/getById/{id}")
     public SwitchResponseDto getById(@PathVariable int id) {
         return switchesService.getById(id);
+    }
+
+    @PostMapping(value = "/insertOne")
+    public void insertOne(@RequestBody SwitchRequestDto switchRequestDto) {
+        switchesService.insertOne(switchRequestDto);
     }
 
     @DeleteMapping(value = "/deleteById/{id}")

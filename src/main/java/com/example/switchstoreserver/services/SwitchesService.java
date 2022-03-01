@@ -1,5 +1,6 @@
 package com.example.switchstoreserver.services;
 
+import com.example.switchstoreserver.dtos.request.SwitchRequestDto;
 import com.example.switchstoreserver.dtos.response.SwitchResponseDto;
 import com.example.switchstoreserver.dtos.response.SwitchesListResponseDto;
 import com.example.switchstoreserver.models.Switch;
@@ -28,13 +29,19 @@ public class SwitchesService {
         return new SwitchesListResponseDto(switchesList);
     }
 
-    public SwitchResponseDto getById(int id){
+    public SwitchResponseDto getById(int id) {
         Switch aSwitch = switchesRepository.findById(id).get();
 
         return modelMapper.map(aSwitch, SwitchResponseDto.class);
     }
 
-    public void deleteById(int id){
+    public void deleteById(int id) {
         switchesRepository.deleteById(id);
+    }
+
+    public void insertOne(SwitchRequestDto switchRequestDto) {
+        Switch aSwitch = modelMapper.map(switchRequestDto, Switch.class);
+
+        switchesRepository.saveAndFlush(aSwitch);
     }
 }
