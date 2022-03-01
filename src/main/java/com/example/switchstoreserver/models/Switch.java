@@ -26,5 +26,5 @@ public class Switch {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "type_id")
-    public SwitchTypes switchType;
+    public SwitchesTypes switchType;
 }

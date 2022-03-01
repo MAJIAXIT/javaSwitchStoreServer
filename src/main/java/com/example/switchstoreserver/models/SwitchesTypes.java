@@ -9,7 +9,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "switch_types")
-public class SwitchTypes {
+public class SwitchesTypes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
