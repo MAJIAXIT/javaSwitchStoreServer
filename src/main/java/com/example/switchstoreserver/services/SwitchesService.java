@@ -44,4 +44,11 @@ public class SwitchesService {
 
         switchesRepository.saveAndFlush(aSwitch);
     }
+
+    public void updateById(int id, SwitchRequestDto switchRequestDto) {
+        Switch aSwitch = modelMapper.map(switchRequestDto, Switch.class);
+        aSwitch.id = id;
+
+        switchesRepository.save(aSwitch);
+    }
 }

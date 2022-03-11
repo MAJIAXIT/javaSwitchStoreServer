@@ -31,6 +31,11 @@ public class SwitchesController {
         switchesService.insertOne(switchRequestDto);
     }
 
+    @PutMapping(value = "/updateById/{id}")
+    public void updateById(@PathVariable int id, @RequestBody SwitchRequestDto switchRequestDto) {
+        switchesService.updateById(id, switchRequestDto);
+    }
+
     @DeleteMapping(value = "/deleteById/{id}")
     public void deleteById(@PathVariable int id) {
         switchesService.deleteById(id);
