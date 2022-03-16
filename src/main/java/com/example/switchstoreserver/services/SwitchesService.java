@@ -8,6 +8,7 @@ import com.example.switchstoreserver.repositories.SwitchesRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class SwitchesService {
     private SwitchesRepository switchesRepository;
 
     public SwitchesListResponseDto getAll() {
-        ArrayList<SwitchResponseDto> switchesList = (ArrayList<SwitchResponseDto>) switchesRepository.findAll().stream().map(aSwitch -> modelMapper.map(aSwitch, SwitchResponseDto.class)).collect(Collectors.toList());
+        ArrayList<SwitchResponseDto> switchesList = (ArrayList<SwitchResponseDto>) switchesRepository.findAll(Sort.by(Sort.Direction.ASC, "id")).stream().map(aSwitch -> modelMapper.map(aSwitch, SwitchResponseDto.class)).collect(Collectors.toList());
 
         return new SwitchesListResponseDto(switchesList);
     }

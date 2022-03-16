@@ -5,6 +5,7 @@ import com.example.switchstoreserver.models.SwitchesTypes;
 import com.example.switchstoreserver.repositories.SwitchesTypesRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class SwitchesTypesService {
     private SwitchesTypesRepository switchesTypesRepository;
 
     public SwitchesTypesListResponseDto getAll() {
-        ArrayList<SwitchesTypes> switchesTypesList = (ArrayList<SwitchesTypes>) switchesTypesRepository.findAll();
+        ArrayList<SwitchesTypes> switchesTypesList = (ArrayList<SwitchesTypes>) switchesTypesRepository.findAll(Sort.by(Sort.Direction.ASC, "id"));
 
         return new SwitchesTypesListResponseDto(switchesTypesList);
     }
